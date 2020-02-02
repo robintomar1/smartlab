@@ -1,0 +1,9 @@
+<launch>
+<node ns="one" name="nero_arduino_zero" pkg="rosserial_python" type="serial_node.py" args="tcp" output="screen" />
+<node ns="two" name="nero_arduino_duemilanove" pkg="rosserial_python" type="serial_node.py" args="tcp 11412" output="screen"/>
+<node ns="three" name="nero_arduino_duemilanove" pkg="rosserial_python" type="serial_node.py" args="tcp 11413" output="screen" />
+<node  name="pir_sensor_node" pkg="smart_lab" type="pir_sensor_node" output="screen" />
+<node  name="ldr_sensor_node" pkg="smart_lab" type="ldr_sensor_node"  output="screen" />
+<node  name="light_off_node" pkg="smart_lab" type="light_off_node" output="screen" />
+
+</launch>
