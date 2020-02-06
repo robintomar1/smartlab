@@ -62,8 +62,11 @@ callback()
 	*  output: projector on and lights off
 	*/
 	int data = msg->data;
-  if (data < 850 and data > 750 and projector_status==0)
-  {	
+	static int count=0;
+  if (data < 700 and data > 600 and projector_status==0)
+  {	count++;
+  	if (count>5)
+  	{
   /*projector has been turned on so lights need to be shut down*/
   	  ros::param::set("/projector_status", 1); 
   	  std_msgs::Int16 light_number;
@@ -82,17 +85,10 @@ callback()
 	  light_number.data=80;
 	  two_pub.publish(light_number);
 	  ros::param::set("/front_light_status", 0);
+	 }
    }
-   if (data <700  and projector_status==0)
-  {	
-  /*
-   *  means that projector is off and lights are on so nothing needs to be done in this 
-   * situation
-  */
-  	  ros::param::set("/projector_status", 0);
-  	  ros::param::set("/front_light_status", 1);
-  	  
-   }
+   else 
+   {count=0;}
     if (data > 900 and projector_status==1)
   {	
   /*projector has been turned off so lights need to be turned on */

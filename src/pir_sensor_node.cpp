@@ -85,7 +85,9 @@ void pir_two_Callback(const std_msgs::Int16::ConstPtr& msg)
 
 void pir_three_Callback(const std_msgs::Int16::ConstPtr& msg)
 {
-  if (msg->data==1)
+	int projector_status;
+	ros::param::get("/projector_status", projector_status);
+  if (msg->data==1 and projector_status==0)
   {
   	  std_msgs::Int16 light_number;
 	  light_number.data=11;
@@ -103,7 +105,9 @@ void pir_three_Callback(const std_msgs::Int16::ConstPtr& msg)
 
 void pir_four_Callback(const std_msgs::Int16::ConstPtr& msg)
 {
-  if (msg->data==1)
+	int projector_status;
+	ros::param::get("/projector_status", projector_status);
+  if (msg->data==1 and projector_status==0)
   {
   	  std_msgs::Int16 light_number;
 	  light_number.data=31;

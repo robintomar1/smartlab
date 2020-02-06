@@ -161,11 +161,7 @@ void pir_two_Callback(const std_msgs::Int16::ConstPtr& msg)
 	  	  std_msgs::Int16 light_number;
 		  light_number.data=110;
 		  three_pub.publish(light_number);
-		  light_number.data=150;
-		  three_pub.publish(light_number);
 		  light_number.data=160;
-		  three_pub.publish(light_number);
-		  light_number.data=170;
 		  three_pub.publish(light_number);
 	   }
 	  	begin_2=ros::Time::now();
